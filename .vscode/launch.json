@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch on iOS",
+            "type": "nativescript",
+            "request": "launch",
+            "platform": "ios",
+            "sourceMaps": true,
+            "watch": true
+        },
+        {
+            "name": "Launch on Android",
+            "type": "nativescript",
+            "request": "launch",
+            "platform": "android",
+            "sourceMaps": true,
+            "watch": true
+        }
+    ]
+}

@@ -1,0 +1,48 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="Schedule Pickup" />
+    
+    <ScrollView>
+        <StackLayout class="p-4">
+            <!-- Address Section -->
+            <Label text="Pickup Location" class="text-xl font-bold mb-2" />
+            <TextField hint="Search address..." text="{{ address }}" 
+                class="p-4 bg-gray-100 rounded-lg mb-4" />
+            
+            <!-- Items Section -->
+            <Label text="Items for Pickup" class="text-xl font-bold mb-2" />
+            <GridLayout rows="auto" columns="*, auto" class="mb-4">
+                <TextField col="0" hint="Add item..." text="{{ newItem }}" 
+                    class="p-4 bg-gray-100 rounded-lg" />
+                <Button col="1" text="Add" tap="{{ addItem }}" 
+                    class="ml-2 px-6 bg-blue-500 text-white rounded-lg" />
+            </GridLayout>
+            
+            <ListView items="{{ selectedItems }}" class="mb-4">
+                <ListView.itemTemplate>
+                    <GridLayout columns="*, auto" class="p-2 border-b border-gray-200">
+                        <Label col="0" text="{{ name }}" />
+                        <Button col="1" text="Remove" tap="{{ $parents['ListView'].onItemRemove }}" 
+                            class="text-red-500" />
+                    </GridLayout>
+                </ListView.itemTemplate>
+            </ListView>
+            
+            <!-- Date & Time Selection -->
+            <Label text="Preferred Pickup Date" class="text-xl font-bold mb-2" />
+            <DatePicker date="{{ preferredDate }}" class="mb-4" />
+            
+            <Label text="Preferred Time Slot" class="text-xl font-bold mb-2" />
+            <ListPicker items="{{ timeSlots }}" selectedIndex="{{ selectedTimeSlotIndex }}" 
+                class="mb-4" />
+            
+            <!-- Additional Notes -->
+            <Label text="Additional Notes" class="text-xl font-bold mb-2" />
+            <TextView hint="Any special instructions..." text="{{ notes }}" 
+                class="p-4 bg-gray-100 rounded-lg mb-4" height="100" />
+            
+            <!-- Submit Button -->
+            <Button text="Schedule Pickup" tap="{{ submitRequest }}" 
+                class="bg-green-500 text-white p-4 rounded-lg" />
+        </StackLayout>
+    </ScrollView>
+</Page>

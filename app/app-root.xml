@@ -1,0 +1,42 @@
+<Frame defaultPage="views/home/home-page">
+    <BottomNavigation>
+        <TabStrip>
+            <TabStripItem>
+                <Label text="Home" />
+                <Image src="font://&#xf015;" class="fas" />
+            </TabStripItem>
+            <TabStripItem>
+                <Label text="Locate" />
+                <Image src="font://&#xf3c5;" class="fas" />
+            </TabStripItem>
+            <TabStripItem>
+                <Label text="Schedule" />
+                <Image src="font://&#xf017;" class="fas" />
+            </TabStripItem>
+            <TabStripItem>
+                <Label text="Learn" />
+                <Image src="font://&#xf02d;" class="fas" />
+            </TabStripItem>
+            <TabStripItem>
+                <Label text="Rewards" />
+                <Image src="font://&#xf091;" class="fas" />
+            </TabStripItem>
+        </TabStrip>
+
+        <TabContentItem>
+            <Frame defaultPage="views/home/home-page" />
+        </TabContentItem>
+        <TabContentItem>
+            <Frame defaultPage="views/locate/locate-page" />
+        </TabContentItem>
+        <TabContentItem>
+            <Frame defaultPage="views/schedule/schedule-page" />
+        </TabContentItem>
+        <TabContentItem>
+            <Frame defaultPage="views/learn/learn-page" />
+        </TabContentItem>
+        <TabContentItem>
+            <Frame defaultPage="views/rewards/rewards-page" />
+        </TabContentItem>
+    </BottomNavigation>
+</Frame>

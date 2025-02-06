@@ -1,0 +1,61 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="Learn" />
+    
+    <ScrollView>
+        <StackLayout class="p-4">
+            <!-- Impact Stats -->
+            <GridLayout rows="auto" columns="*, *, *" class="bg-green-100 p-4 rounded-lg mb-4">
+                <StackLayout col="0" class="text-center">
+                    <Label text="{{ totalRecycled }}" class="text-xl font-bold text-green-700" />
+                    <Label text="KG Recycled" class="text-sm text-green-600" />
+                </StackLayout>
+                <StackLayout col="1" class="text-center">
+                    <Label text="{{ treesEquivalent }}" class="text-xl font-bold text-green-700" />
+                    <Label text="Trees Saved" class="text-sm text-green-600" />
+                </StackLayout>
+                <StackLayout col="2" class="text-center">
+                    <Label text="{{ co2Reduced }}" class="text-xl font-bold text-green-700" />
+                    <Label text="CO2 Reduced" class="text-sm text-green-600" />
+                </StackLayout>
+            </GridLayout>
+
+            <!-- Recycling Guides -->
+            <Label text="Recycling Guides" class="text-xl font-bold mb-2" />
+            <ListView items="{{ recyclingGuides }}" class="mb-4" itemTap="{{ onGuideSelect }}">
+                <ListView.itemTemplate>
+                    <GridLayout columns="auto, *" class="p-4 bg-white rounded-lg shadow-sm mb-2">
+                        <Image col="0" src="{{ icon }}" class="w-12 h-12 mr-4" />
+                        <StackLayout col="1">
+                            <Label text="{{ title }}" class="font-bold" />
+                            <Label text="{{ description }}" class="text-gray-600" textWrap="true" />
+                        </StackLayout>
+                    </GridLayout>
+                </ListView.itemTemplate>
+            </ListView>
+
+            <!-- Tips & Best Practices -->
+            <Label text="Daily Tips" class="text-xl font-bold mb-2" />
+            <ListView items="{{ dailyTips }}" class="mb-4">
+                <ListView.itemTemplate>
+                    <StackLayout class="p-4 bg-white rounded-lg shadow-sm mb-2">
+                        <Label text="{{ title }}" class="font-bold mb-1" />
+                        <Label text="{{ content }}" class="text-gray-600" textWrap="true" />
+                    </StackLayout>
+                </ListView.itemTemplate>
+            </ListView>
+
+            <!-- News & Updates -->
+            <Label text="Latest News" class="text-xl font-bold mb-2" />
+            <ListView items="{{ newsUpdates }}" class="mb-4" itemTap="{{ onNewsSelect }}">
+                <ListView.itemTemplate>
+                    <StackLayout class="p-4 bg-white rounded-lg shadow-sm mb-2">
+                        <Image src="{{ image }}" class="w-full h-40 rounded-lg mb-2" stretch="aspectFill" />
+                        <Label text="{{ title }}" class="font-bold mb-1" />
+                        <Label text="{{ date }}" class="text-sm text-gray-500 mb-1" />
+                        <Label text="{{ summary }}" class="text-gray-600" textWrap="true" />
+                    </StackLayout>
+                </ListView.itemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
+</Page>

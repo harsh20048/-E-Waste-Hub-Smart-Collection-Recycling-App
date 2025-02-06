@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+.fas {
+    font-family: "Font Awesome 5 Free", "fa-solid-900";
+    font-weight: 900;
+}
+
+.action-button {
+    @apply bg-blue-500 text-white p-4 rounded-lg;
+}
+
+.card {
+    @apply bg-white p-4 rounded-lg shadow-md mb-4;
+}
+
+.section-title {
+    @apply text-xl font-bold mb-2;
+}
+
+.stats-container {
+    @apply bg-green-100 p-4 rounded-lg mb-4;
+}
+
+.stat-value {
+    @apply text-xl font-bold text-green-700;
+}
+
+.stat-label {
+    @apply text-sm text-green-600;
+}

@@ -1,0 +1,47 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="Collection Centers" />
+    
+    <GridLayout rows="auto, *">
+        <!-- Search Bar -->
+        <GridLayout row="0" columns="*, auto" class="p-2 bg-white border-b border-gray-200">
+            <SearchBar col="0" hint="Search collection centers..." text="{{ searchQuery }}" 
+                submit="{{ onSearch }}" clear="{{ onClear }}" 
+                class="bg-gray-100 rounded-lg" />
+            <Button col="1" text="Filter" tap="{{ toggleFilters }}" 
+                class="ml-2 px-4 bg-blue-500 text-white rounded-lg" />
+        </GridLayout>
+
+        <!-- Map and List View -->
+        <GridLayout row="1" rows="*, auto">
+            <!-- Map View -->
+            <ContentView row="0">
+                <MapView latitude="{{ userLocation.latitude }}" 
+                    longitude="{{ userLocation.longitude }}" 
+                    zoom="15" 
+                    markers="{{ mapMarkers }}"
+                    markerSelect="{{ onMarkerSelect }}" />
+            </ContentView>
+
+            <!-- Center Details Card -->
+            <StackLayout row="1" class="bg-white p-4 rounded-t-lg shadow-lg" 
+                visibility="{{ selectedCenter ? 'visible' : 'collapsed' }}">
+                <GridLayout columns="*, auto" class="mb-2">
+                    <Label col="0" text="{{ selectedCenter.name }}" class="text-lg font-bold" />
+                    <Label col="1" text="{{ selectedCenter.rating }}★" class="text-yellow-500" />
+                </GridLayout>
+                <Label text="{{ selectedCenter.address }}" class="text-gray-600 mb-2" textWrap="true" />
+                <GridLayout columns="auto, *" class="mb-2">
+                    <Label col="0" text="Status: " class="font-bold" />
+                    <Label col="1" text="{{ selectedCenter.status }}" 
+                        class="{{ selectedCenter.status === 'Open' ? 'text-green-600' : 'text-red-600' }}" />
+                </GridLayout>
+                <GridLayout columns="*, *" class="mt-2">
+                    <Button col="0" text="Get Directions" tap="{{ getDirections }}" 
+                        class="bg-blue-500 text-white p-2 rounded-lg m-1" />
+                    <Button col="1" text="Schedule Drop-off" tap="{{ scheduleDropoff }}" 
+                        class="bg-green-500 text-white p-2 rounded-lg m-1" />
+                </GridLayout>
+            </StackLayout>
+        </GridLayout>
+    </GridLayout>
+</Page>

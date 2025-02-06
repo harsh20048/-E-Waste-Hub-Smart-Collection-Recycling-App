@@ -1,0 +1,74 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="Admin Dashboard">
+        <ActionItem text="Refresh" tap="{{ refreshData }}" ios.position="right" android.position="popup" />
+    </ActionBar>
+    
+    <ScrollView>
+        <StackLayout class="p-4">
+            <!-- Overview Stats -->
+            <GridLayout rows="auto" columns="*, *, *" class="bg-blue-100 p-4 rounded-lg mb-4">
+                <StackLayout col="0" class="text-center">
+                    <Label text="{{ totalPickups }}" class="text-xl font-bold text-blue-700" />
+                    <Label text="Pickups Today" class="text-sm text-blue-600" />
+                </StackLayout>
+                <StackLayout col="1" class="text-center">
+                    <Label text="{{ pendingRequests }}" class="text-xl font-bold text-blue-700" />
+                    <Label text="Pending" class="text-sm text-blue-600" />
+                </StackLayout>
+                <StackLayout col="2" class="text-center">
+                    <Label text="{{ activeDrivers }}" class="text-xl font-bold text-blue-700" />
+                    <Label text="Active Drivers" class="text-sm text-blue-600" />
+                </StackLayout>
+            </GridLayout>
+
+            <!-- Recent Pickup Requests -->
+            <Label text="Recent Requests" class="text-xl font-bold mb-2" />
+            <ListView items="{{ pickupRequests }}" class="mb-4">
+                <ListView.itemTemplate>
+                    <GridLayout columns="*, auto" rows="auto, auto" class="p-4 bg-white rounded-lg shadow-sm mb-2">
+                        <Label col="0" row="0" text="{{ address }}" class="font-bold" />
+                        <Label col="1" row="0" text="{{ status }}" 
+                            class="{{ status === 'Pending' ? 'text-orange-500' : status === 'In Progress' ? 'text-blue-500' : 'text-green-500' }}" />
+                        <StackLayout col="0" row="1" colSpan="2">
+                            <Label text="{{ items }}" class="text-gray-600" textWrap="true" />
+                            <Label text="{{ scheduledTime }}" class="text-sm text-gray-500" />
+                        </StackLayout>
+                    </GridLayout>
+                </ListView.itemTemplate>
+            </ListView>
+
+            <!-- Collection Center Status -->
+            <Label text="Collection Centers" class="text-xl font-bold mb-2" />
+            <ListView items="{{ collectionCenters }}" class="mb-4">
+                <ListView.itemTemplate>
+                    <GridLayout columns="*, auto" class="p-4 bg-white rounded-lg shadow-sm mb-2">
+                        <StackLayout col="0">
+                            <Label text="{{ name }}" class="font-bold" />
+                            <Label text="{{ address }}" class="text-gray-600" textWrap="true" />
+                            <Label text="{{ capacity }}" class="text-sm" 
+                                class="{{ capacityPercentage >= 90 ? 'text-red-500' : capacityPercentage >= 70 ? 'text-orange-500' : 'text-green-500' }}" />
+                        </StackLayout>
+                        <Label col="1" text="{{ status }}" 
+                            class="{{ status === 'Online' ? 'text-green-500' : 'text-red-500' }}" />
+                    </GridLayout>
+                </ListView.itemTemplate>
+            </ListView>
+
+            <!-- Driver Status -->
+            <Label text="Active Drivers" class="text-xl font-bold mb-2" />
+            <ListView items="{{ drivers }}" class="mb-4">
+                <ListView.itemTemplate>
+                    <GridLayout columns="auto, *, auto" class="p-4 bg-white rounded-lg shadow-sm mb-2">
+                        <Image col="0" src="{{ avatar }}" class="w-10 h-10 rounded-full mr-2" />
+                        <StackLayout col="1">
+                            <Label text="{{ name }}" class="font-bold" />
+                            <Label text="{{ currentLocation }}" class="text-gray-600" textWrap="true" />
+                        </StackLayout>
+                        <Label col="2" text="{{ status }}" 
+                            class="{{ status === 'Available' ? 'text-green-500' : 'text-orange-500' }}" />
+                    </GridLayout>
+                </ListView.itemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
+</Page>
